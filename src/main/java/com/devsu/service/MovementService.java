@@ -84,6 +84,9 @@ public class MovementService {
     if (CREDIT.equalsIgnoreCase(movementType)) {
       return currentBalance + amount;
     } else if (DEBIT.equalsIgnoreCase(movementType)) {
+      if (currentBalance < amount) {
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Saldo no disponible");
+      }
       return currentBalance - amount;
     }
     throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
