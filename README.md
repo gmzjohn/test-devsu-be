@@ -16,6 +16,16 @@ Before running the application, create a container with the database
 docker run -d --name devsu-postgres -e POSTGRES_DB=devsudb -e POSTGRES_USER=devsu -e POSTGRES_PASSWORD=1234 -p 5432:5432 postgres:16
 ```
 
+### 💻 Development
+
+To run the project locally for development, make sure PostgreSQL is running first (see the configuration step above), then execute:
+
+```bash
+mvn spring-boot:run
+```
+
+The application will start on `http://localhost:8080`. Liquibase will automatically create all required tables on first startup.
+
 ### 🐳 Build & Run with Podman/Docker
 
 We use Podman/Docker for containerization. You can build and run the environment with the following commands:
